@@ -1,0 +1,2 @@
+# Sdorica_Dialog_Beautify_Tool
+用于将AssetStudio导出的万象物语对白txt文件美化并编码的工具，可以使用此工具批量处理对白文本内容。
