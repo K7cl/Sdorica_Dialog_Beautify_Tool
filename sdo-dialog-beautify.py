@@ -2,7 +2,7 @@
 # Copyright 2020 K7cl
 #
 '''***********************************************************************************************
-   ***                              I N T E R N A L  ---  K 7 C L                              ***
+   ***                                         K 7 C L                                         ***
    ***********************************************************************************************
    *                                                                                             *
    *                 Project Name : Sdorica Dialog Beautify Tool                                 *
@@ -13,7 +13,7 @@
    *                                                                                             *
    *                   Start Date : June 14, 2020                                                *
    *                                                                                             *
-   *                  Last Update : June 15, 2020                                                *
+   *                  Last Update : June 27, 2020                                                *
    *                                                                                             *
    *---------------------------------------------------------------------------------------------*'''
 
@@ -46,10 +46,22 @@ for root,dirs,files in os.walk(os.getcwd()):
 			matcher1 = re.search(pattern,text)
 			newtext = matcher1.group(0)
 			jsondic = json.loads(newtext.replace('sfxVolume":.','sfxVolume":0.'))
-			p = r'(?<=main_).+?(?=_dialog_chinesesimplified)'
-			pattern = re.compile(p)
-			matcher1 = re.search(pattern,filename)
-			filename = matcher1.group(0)
+			try:
+				p = r'(?:main_).+?(?=_dialog_chinesesimplified)'
+				pattern = re.compile(p)
+				matcher1 = re.search(pattern,filename)
+				filename = matcher1.group(0)
+			except:
+				try:
+					p = r'(?:fest_).+?(?=_dialog_chinesesimplified)'
+					pattern = re.compile(p)
+					matcher1 = re.search(pattern,filename)
+					filename = matcher1.group(0)
+				except:
+					p = r'(?:char_).+?(?=_dialog_chinesesimplified)'
+					pattern = re.compile(p)
+					matcher1 = re.search(pattern,filename)
+					filename = matcher1.group(0)
 			n = 0
 			a = 1
 			while a == 1:
